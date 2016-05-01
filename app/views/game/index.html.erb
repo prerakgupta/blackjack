@@ -1,0 +1,65 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<center>
+			<u><h1 style="font-size: 40px">Welcome to Casino Royale!</h1></u>
+			<div id ="welcome">
+				<p style="padding-top: 30px; color: #D9534F">
+					Lets play Blackjack today.<br/>Blackjack, also known as twenty-one, is the most widely played casino banking game in the world.<br/>
+					It's a fun ride from here.
+				</p>
+				<div style="padding-top: 30px;">
+					<button class="btn btn-large btn-primary" id="proceed">Find a table</button>
+					<button class="btn btn-large btn-warning" id="rules_button">Rules first!</button>
+				</div>
+			</div>
+
+			<div id="rules" style="display: none; padding-top: 30px; color: #5CB85C">
+				<p>Total 6 card decks i.e. 312 cards will be used</p>
+				<p>Number cards (2 to 10) has a point value equal to the number on the card</p>
+				<p>Face cards Jack, Queen and King have 10 points each while Ace has 11.</p>
+				<p>A score of exactly 21 is called Black Jack which implises player has won.</p>
+				<p>A score of > 21 is bust.</p>
+				<button class="btn btn-small btn-primary" id="close_rules">Back</button>
+			</div>
+
+			<div class="col-md-3 col-md-offset-4" id="place_bet" style="display: none; padding-top: 20px;">
+				<div class="input-group">
+      		<input type="text" class="form-control" placeholder="Enter the betting amount" id = "amount">
+      			<span class="input-group-btn">
+        		<button class="btn btn-success" type="button" id="bet">Bet!</button>
+      		</span>
+    		</div>
+    	</div>	
+
+			<div id="game" class="row" style="display: none;">
+				<h2><p id="amount_playing" style="color: #3C763D;"></p></h2>
+				<div id="player" class="col-md-6">
+					<img src= <%= image_url('player.png') %> ></img>
+					<div>
+						<p id="player_cards" style="font-size: 20px"></p>
+					</div>
+					<button class="btn btn-large btn-info get_card" data-type="player" id="hit">Hit Me</button>
+					<button class="btn btn-large btn-danger get_card" data-type="dealer" id="stand">Stand Down</button>
+				</div>
+				<div id="dealer" class="col-md-6">
+					<img src= <%= image_url('dealer.png') %> ></img>
+					<div>
+						<p id="dealer_cards" style="font-size: 20px"></p>
+					</div>
+				</div>
+			</div>
+
+			<div id="message"></div>
+
+			<div id="game_finished" style="display: none; padding-top: 30px;">
+				<p id="winner_info"></p>
+				<div style="padding-top: 20px;">
+					<button id="next_game" class="btn btn-primary btn-large">Play again?</button>
+				</div>
+			</div>
+
+		</center>	
+	</body>
+</html>
