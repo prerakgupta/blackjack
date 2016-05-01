@@ -23,6 +23,7 @@ $(document).ready(function(){
   $("#bet").on("click", function(e){
     e.preventDefault();
     var input = $("#amount").val();
+    //Checks if the amount entered is a valid number os not
     if( ((input - 0) == input && (''+input).trim().length > 0) && input!=0 ){
       $("#place_bet").hide();
       $("#amount_playing").html("Playing for " + input + "$");
@@ -45,7 +46,7 @@ $(document).ready(function(){
   })
 
   $(".get_card").on("click", function(e){
-    var type = $(this).data("type");
+    var type = $(this).data("type"); //dealer or player
     var id = type + "_cards";
     e.preventDefault();
     if(type=="dealer"){

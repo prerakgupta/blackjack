@@ -1,19 +1,23 @@
 class GameController < ApplicationController
 
   def index
+    #Using rails sessions to store the array of cards for dealer, player and overall
     session[:all_cards] = get_cards
     session[:player_cards] = []
     session[:dealer_cards] = []
   end
 
+  #Finds the next random card to deal
   def get_next_card
     if params[:type]
       num_of_cards = session[:all_cards].size - 1
       random_num = rand(0..num_of_cards)
 
+      #Ensures a previously dealt card is not dealt again
       while( session[:all_cards][random_num].to_i==0 )
         random_num = rand(0..num_of_cards)
       end
+
       selected = session[:all_cards][random_num]
       session[:all_cards][random_num] = 0
       session[:player_cards] << selected if params[:type].to_s=="player"
@@ -28,6 +32,7 @@ class GameController < ApplicationController
     end
   end
 
+  #checks the result based on pre-defined rules to determine whether someone has won or not
   def check_results
     if params[:type]
       if params[:type].to_s=="player"
@@ -47,6 +52,7 @@ class GameController < ApplicationController
 
   private
 
+    #This method generates the scores array of all cards based on the 6 deck of cards
     def get_cards
       cards = []
       index = 0
@@ -59,6 +65,7 @@ class GameController < ApplicationController
       shuffle(cards)
     end
 
+    #Shuffles the cards to ensure randomness
     def shuffle(cards)
       cards.size.times do 
         rand1, rand2, rand3 = get_rand(cards.size-1)
